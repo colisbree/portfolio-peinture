@@ -12,6 +12,7 @@ Site internet présentant des peintures
 * Symfony CLI
 * Docker
 * Docker-compose
+* NodeJS et NPM
 
 Vous pouvez vérifier les pré-requis (sauf docker) avec la commande suivante :
 
@@ -22,6 +23,9 @@ symfony check:requirements
 ### Lancer l'environnement de développement
 
 ```bash
+composer install
+npm install
+npm run build
 docker-compose up -d
 symfony serve -d
 ```
@@ -31,3 +35,4 @@ symfony serve -d
 ```bash
 Php bin/phpunit --testdox
 ```
+

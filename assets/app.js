@@ -11,5 +11,7 @@ import './styles/app.scss';
 // utilisation de plugin
 import { Tooltips, Toast, Popover } from 'bootstrap';
 
+import './js/theme';
+
 // start the Stimulus application
 import './bootstrap';
