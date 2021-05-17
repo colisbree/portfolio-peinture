@@ -11,7 +11,9 @@
 
     </head>
     <body>
+        {% include 'home/base/nav.html.twig' %}
         {% block body %}{% endblock %}
+        {% include 'home/base/footer.html.twig' %}
 
         {# insertion du javascript #}
         {% block javascripts %}
