@@ -19,6 +19,21 @@ class PeintureRepository extends ServiceEntityRepository
         parent::__construct($registry, Peinture::class);
     }
 
+    /**
+     * retourne les 3 dernières peintures
+     *
+     * @return peinture[] Return an array of Peinture objects
+     */
+    public function lasTree()
+    {
+        return $this -> createQueryBuilder('p')  // p = alias de la table peinture
+                -> orderBy('p.id', 'DESC')
+                -> setMaxResults(3)
+                -> getQuery()
+                -> getResult()
+        ;
+    }
+    
     // /**
     //  * @return Peinture[] Returns an array of Peinture objects
     //  */
