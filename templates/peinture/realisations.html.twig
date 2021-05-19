@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réalisations{% endblock %}
+
+{% block body %}
+
+<!-- ARTICLES -->
+<section class="pt-7 pt-md-10">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Heading -->
+                <h2 class="mb-0">
+                    Dernières réalisations
+                </h2>
+                <!--  -->
+                <p class="mb-5 text-muted">
+                    These span the grid's entire width with several options.
+                </p>
+            </div>  
+            {% for peinture in peintures %}
+                <div class="col-12 col-md-6 d-flex">
+                    <!-- Card -->
+                    <div class="card mb-6 shadow-light-lg lift lift-lg">                
+                        <a class="card-img-top" href="#!">
+                            <!-- Image (placeholder) -->
+                            <img src="{{ asset(peinture.file) }}" alt="..." class="card-img-top">
+                        </a>
+                        <!-- Body -->
+                        <a class="card-body" href="#!">
+                            <!-- Heading -->
+                            <h3>
+                                {{ peinture.nom }}
+                            </h3>
+
+                            <!-- Text -->
+                            <p class="mb-0 text-muted">
+                                {{ peinture.description|u.truncate(200, '...', false) }}
+                            </p>
+                        </a>
+                        <!-- Meta -->
+                        <a class="card-meta met-auto" href="#">
+                            <!-- Divider -->
+                            <hr class="card-meta-divider">
+                            <!-- Date -->
+                            <p class="h6 text-uppercase text-muted mb-0 ms-auto">
+                                <time datetime="2019-05-02">Ajouté le {{ peinture.createdAt|date('d/m/y') }}</time>
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div> <!-- / .row -->
+
+    </div> <!-- / .container -->
+    <div class="d-flex justify-content-center">
+        {% do peintures.setPageRange(2) %}
+        {{ knp_pagination_render(peintures, '/home/base/pagination.html.twig') }}
+    </div>
+</section>
+
+{% endblock %}
