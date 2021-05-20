@@ -33,7 +33,8 @@ class AppFixtures extends Fixture
                 -> setNom($faker -> lastname())
                 -> setTelephone($faker -> phoneNumber())
                 -> setAPropos($faker -> text())
-                -> setInstagram('instagram');
+                -> setInstagram('instagram')
+                -> setRoles(['ROLE_PEINTRE']);
                 
         $password = $this->encoder->encodePassword($user, 'password'); //le mdp ici est : password
         $user   -> setPassword($password);
