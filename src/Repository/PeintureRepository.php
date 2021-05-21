@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Peinture;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Entity\Categorie;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Peinture|null find($id, $lockMode = null, $lockVersion = null)
@@ -34,22 +35,20 @@ class PeintureRepository extends ServiceEntityRepository
         ;
     }
     
-    // /**
-    //  * @return Peinture[] Returns an array of Peinture objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+    * @return Peinture[] Returns an array of Peinture objects
+    */
+    public function findAllPortfolio(Categorie $categorie): array
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
+            ->where(':categorie MEMBER OF p.categorie')
+            ->andWhere('p.portfolio = TRUE')
+            ->setParameter('categorie', $categorie)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Peinture

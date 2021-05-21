@@ -33,16 +33,14 @@
             Portfolio
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarAccount">
-            <li class="dropdown-item dropend">
-                <a  href="#">
-                  Categorie 1
-                </a>
-            </li>
-            <li class="dropdown-item dropend">
-              <a href="#">
-                Categorie 2
-              </a>
-            </li>
+            {% for categorie in categorieNavbar() %}
+              <li class="dropdown-item dropend">
+                  <a  href="{{ path('portfolio_categorie', {'slug': categorie.slug}) }}">
+                    {{ categorie.nom }}
+                  </a>
+              </li>
+            {% endfor %}
+            
           </ul>
         </li> 
         <li class="nav-item dropdown">
