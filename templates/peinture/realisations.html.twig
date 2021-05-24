@@ -22,12 +22,12 @@
                 <div class="col-12 col-md-6 d-flex">
                     <!-- Card -->
                     <div class="card mb-6 shadow-light-lg lift lift-lg">                
-                        <a class="card-img-top" href="#!">
+                        <a class="card-img-top" href="{{ path('realisations_details', {'slug':peinture.slug}) }}">
                             <!-- Image (placeholder) -->
                             <img src="{{ asset(peinture.file) }}" alt="..." class="card-img-top">
                         </a>
                         <!-- Body -->
-                        <a class="card-body" href="#!">
+                        <a class="card-body" href="{{ path('realisations_details', {'slug':peinture.slug}) }}">
                             <!-- Heading -->
                             <h3>
                                 {{ peinture.nom }}
@@ -39,7 +39,7 @@
                             </p>
                         </a>
                         <!-- Meta -->
-                        <a class="card-meta met-auto" href="#">
+                        <a class="card-meta met-auto" href="{{ path('realisations_details', {'slug':peinture.slug}) }}">
                             <!-- Divider -->
                             <hr class="card-meta-divider">
                             <!-- Date -->
