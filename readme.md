@@ -41,3 +41,10 @@ Symfony console doctrine:fixtures:load
 Php bin/phpunit --testdox
 ```
 
+## Production
+### Envoi des mails de contacts
+
+Les mails de prise de contact sont stockés en BDD. Pour les envoyer au peintre par mail, il faut mettre en place une tâche Cron sur :
+```bash
+symfony console app:send-contact
+```
