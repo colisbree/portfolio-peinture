@@ -25,7 +25,7 @@
                     <div class="card shadow-light-lg lift lift-lg" data-aos="fade-up" data-aos-delay="100">
 
                         <!-- Body -->
-                        <a class="card-body my-auto" href="#!">
+                        <a class="card-body my-auto" href="{{ path('actualites_detail', {'slug':blogpost.slug}) }}">
 
                             <!-- Heading -->
                             <h3 class="mt-auto">
@@ -40,7 +40,7 @@
                         </a>
 
                         <!-- Meta -->
-                        <a class="card-meta" href="#!">
+                        <a class="card-meta" href="{{ path('actualites_detail', {'slug':blogpost.slug}) }}">
 
                             <!-- Divider -->
                             <hr class="card-meta-divider">

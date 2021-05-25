@@ -23,7 +23,7 @@
                     <!-- Card -->
                     <div class="card shadow-light-lg lift lift-lg m-2">
                         <!-- Body -->
-                        <a class="card-body my-auto" href="#!">
+                        <a class="card-body my-auto" href="{{ path('actualites_detail', {'slug':blogpost.slug}) }}">
                             <!-- Heading -->
                             <h3 class="mt-auto">
                                 {{ blogpost.titre }}
@@ -34,7 +34,7 @@
                             </p>
                         </a>
                         <!-- Meta -->
-                        <a class="card-meta" href="#!">
+                        <a class="card-meta" href="{{ path('actualites_detail', {'slug':blogpost.slug}) }}">
                             <!-- Divider -->
                             <hr class="card-meta-divider">
                             <!-- Date -->
