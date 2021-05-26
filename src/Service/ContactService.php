@@ -30,7 +30,7 @@ class ContactService
     // la fonction suivante va de pair avec le fichier Command\SendCommandContact.php
     public function isSend(Contact $contact): void
     {
-        $contact    -> setIsSend(true);
+        $contact -> setIsSend(true);
 
         $this -> manager -> persist($contact);
         $this -> manager -> flush();

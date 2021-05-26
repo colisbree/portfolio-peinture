@@ -48,3 +48,6 @@ Les mails de prise de contact sont stockés en BDD. Pour les envoyer au peintre 
 ```bash
 symfony console app:send-contact
 ```
+
+remarque : Penser à corriger les lignes 42 à 45 du fichier Command/SendContactCommand.php
+

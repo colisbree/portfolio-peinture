@@ -38,12 +38,12 @@ class SendContactCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)  // logique exécutée après le lancement de la ligne de commande ci-au-dessus
     {
         $toSend = $this -> contactRepository -> findBy(['isSend' => false]);    // récupère liste de tous les message en attente d'envoi
-        $adress = new Address(
-            $this -> UserRepository -> getPeintre() -> getEmail(),
-            $this -> UserRepository -> getPeintre() -> getNom() . ' '.
-                $this -> UserRepository -> getPeintre() -> getPrenom()
-        );
         
+        /* bug non compris => Call to a member function getPeintre() on null
+        $adress = new Address($this->UserRepository->getPeintre()->getEmail(), $this->UserRepository->getPeintre()->getNom());
+        */
+        $adress = new Address('toto@toto.com','nom du Peintre');
+
         foreach ($toSend as $mail) {
             $email = (new Email())
                 -> from($mail -> getEmail())
