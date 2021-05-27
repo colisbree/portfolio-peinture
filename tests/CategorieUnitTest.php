@@ -2,6 +2,7 @@
 
 namespace App\Tests;
 
+use App\Entity\Peinture;
 use App\Entity\Categorie;
 use PHPUnit\Framework\TestCase;
 
@@ -42,5 +43,24 @@ class CategorieUnitTest extends TestCase
         $this->assertEmpty($categorie->getNom());
         $this->assertEmpty($categorie->getDescription());
         $this->assertEmpty($categorie->getSlug());
+        $this->assertEmpty($categorie->getId());
     }
+
+    /*
+        Ajout tests après codage du front 
+    */
+
+    public function testAddGetRemovePeinture()
+    {
+        $categorie = new Categorie();
+        $peinture = new Peinture();
+
+        $this->assertEmpty($categorie -> getPeintures());     // verifie que le getCommentaire est vide
+
+        $categorie -> addPeinture($peinture);
+        $this -> assertContains($peinture, $categorie -> getPeintures());  // vérifie qu'on récupère bien le commentaire
+
+        $categorie -> RemovePeinture($peinture);
+        $this->assertEmpty($categorie -> getPeintures());     // vérifie que le getCommentaire est de nouveau vide
+    } 
 }

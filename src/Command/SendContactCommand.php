@@ -40,7 +40,10 @@ class SendContactCommand extends Command
         $toSend = $this -> contactRepository -> findBy(['isSend' => false]);    // récupère liste de tous les message en attente d'envoi
         
         /* bug non compris => Call to a member function getPeintre() on null
-        $adress = new Address($this->UserRepository->getPeintre()->getEmail(), $this->UserRepository->getPeintre()->getNom());
+        $adress = new Address(
+            $this->UserRepository->getPeintre()->getEmail(), 
+            $this->UserRepository->getPeintre()->getNom(). ' ' . $this->UserRepository->getPeintre()->getPrenom()
+            );
         */
         $adress = new Address('toto@toto.com','nom du Peintre');
 

@@ -11,6 +11,9 @@ use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
+/**
+ * @codeCoverageIgnore
+ */
 class AppFixtures extends Fixture
 {
     private $encoder; // pour le mot de passe
@@ -55,6 +58,18 @@ class AppFixtures extends Fixture
             $manager -> persist($blogpost);
         }
 
+        // création d'un blogpost pour test fonctionnel
+        $blogpost = new Blogpost();
+
+        $blogpost
+                -> setTitre('Blogpost test')
+                -> setCreatedAt($faker -> dateTimeBetween('-6 month', 'now'))
+                -> setContenu($faker ->text(350))
+                -> setSlug('blogpost-test')
+                -> setUser($user);
+
+        $manager -> persist($blogpost);
+
         //création de 5 catégories
         for ($k=0; $k<5; $k++) {
             $categorie = new Categorie();
@@ -89,6 +104,35 @@ class AppFixtures extends Fixture
             }
         }
 
+        // categorie de test fonctionnel
+        $categorie = new Categorie();
+
+        $categorie
+            -> setNom('Categorie test')
+            -> setDescription($faker -> word(10, true))
+            -> setSlug('categorie-test');
+        
+        $manager -> persist($categorie);
+
+        // peinture de test fonctionnel
+        $peinture = new Peinture();
+
+        $peinture
+                -> setNom('Peinture test')
+                -> setLargeur($faker -> randomFloat(2, 20, 60))
+                -> setHauteur($faker -> randomFloat(2, 20, 60))
+                -> setEnVente($faker -> randomElement([true, false]))
+                -> setDateRealisation($faker -> dateTimeBetween('-6 month', 'now'))
+                -> setCreatedAt($faker -> dateTimeBetween('-6 month', 'now'))
+                -> setDescription($faker -> text())
+                -> setPortfolio($faker -> randomElement([true, false]))
+                -> setSlug('peinture-test')
+                -> setFile('https://picsum.photos/500')
+                -> addCategorie($categorie)
+                -> setPrix($faker -> randomFloat(2, 100, 9999))
+                -> setUser($user);
+
+        $manager -> persist($peinture);
 
         $manager->flush(); // insère les données en BDD
     }

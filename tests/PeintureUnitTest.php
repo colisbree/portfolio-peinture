@@ -6,6 +6,7 @@ use DateTime;
 use App\Entity\User;
 use App\Entity\Peinture;
 use App\Entity\Categorie;
+use App\Entity\Commentaire;
 use PHPUnit\Framework\TestCase;
 
 
@@ -102,5 +103,38 @@ class PeintureUnitTest extends TestCase
         $this->assertEmpty($peinture->getPrix());
         $this->assertEmpty($peinture->getCategorie());
         $this->assertEmpty($peinture->getUser());
+        $this->assertEmpty($peinture->getId());
     }
+
+    /*
+        Ajout tests après codage du front 
+    */
+
+    public function testAddGetRemoveCommentaire()
+    {
+        $peinture = new Peinture();
+        $commentaire = new Commentaire();
+
+        $this->assertEmpty($peinture -> getCommentaires());     // verifie que le getCommentaire est vide
+
+        $peinture -> addCommentaire($commentaire);
+        $this -> assertContains($commentaire, $peinture -> getCommentaires());  // vérifie qu'on récupère bien le commentaire
+
+        $peinture -> RemoveCommentaire($commentaire);
+        $this->assertEmpty($peinture -> getCommentaires());     // vérifie que le getCommentaire est de nouveau vide
+    } 
+
+    public function testAddGetRemoveCategorie()
+    {
+        $peinture = new Peinture();
+        $categorie = new Categorie();
+
+        $this->assertEmpty($peinture -> getCategorie());     // verifie que le getCommentaire est vide
+
+        $peinture -> addCategorie($categorie);
+        $this -> assertContains($categorie, $peinture -> getCategorie());  // vérifie qu'on récupère bien le commentaire
+
+        $peinture -> RemoveCategorie($categorie);
+        $this->assertEmpty($peinture -> getCategorie());     // vérifie que le getCommentaire est de nouveau vide
+    } 
 }
