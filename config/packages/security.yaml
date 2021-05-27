@@ -35,5 +35,5 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/admin, roles: ROLE_USER }  # pour ce projet on modifie ROLE_ADMIN par ROLE_USER car il n'y a qu'un utilisateur qui est le peintre
         # - { path: ^/profile, roles: ROLE_USER }
