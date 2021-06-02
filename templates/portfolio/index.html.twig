@@ -31,11 +31,11 @@
             <div class="row" id="portfolio" data-isotope='{"layoutMode": "fitRows"}'>
 
                 {% for categorie in categories %}
-                    {% set img = categorie.peintures|last %}
+                    {% set peinture = categorie.peintures|last %}
                     <div class="col-12 col-md-4 ux">
 
                         <a class="card lift lift-lg shadow-light-lg mb-7" href="{{ path('portfolio_categorie', {'slug':categorie.slug}) }}">
-                        <img class="card-img-top" src="{{ img.file }}" alt="..." />
+                        <img class="card-img-top" src="../uploads/peintures/placeholder.jpg" alt="..." />
 
                         <div class="card-body">
                             <div class="shape shape-bottom-100 shape-fluid-x svg-shim text-white">
