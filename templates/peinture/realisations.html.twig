@@ -24,7 +24,7 @@
                     <div class="card mb-6 shadow-light-lg lift lift-lg">                
                         <a class="card-img-top" href="{{ path('realisations_details', {'slug':peinture.slug}) }}">
                             <!-- Image (placeholder) -->
-                            <img src="{{ asset(peinture.file) }}" alt="..." class="card-img-top">
+                            <img src="{{ vich_uploader_asset(peinture, 'imageFile') }}" alt="..." class="card-img-top">
                         </a>
                         <!-- Body -->
                         <a class="card-body" href="{{ path('realisations_details', {'slug':peinture.slug}) }}">

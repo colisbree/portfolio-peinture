@@ -95,7 +95,7 @@ class AppFixtures extends Fixture
                         -> setDescription($faker -> text())
                         -> setPortfolio($faker -> randomElement([true, false]))
                         -> setSlug($faker -> slug())
-                        -> setFile('https://picsum.photos/500')
+                        -> setFile('placeholder.jpg')
                         -> addCategorie($categorie)
                         -> setPrix($faker -> randomFloat(2, 100, 9999))
                         -> setUser($user);
@@ -127,7 +127,7 @@ class AppFixtures extends Fixture
                 -> setDescription($faker -> text())
                 -> setPortfolio($faker -> randomElement([true, false]))
                 -> setSlug('peinture-test')
-                -> setFile('https://picsum.photos/500')
+                -> setFile('placeholder.jpg')
                 -> addCategorie($categorie)
                 -> setPrix($faker -> randomFloat(2, 100, 9999))
                 -> setUser($user);
