@@ -27,6 +27,7 @@ yarn-error.log
 ###< phpunit/phpunit ###
 
 /public/uploads/peintures/*
-<<<<<<< HEAD
 !/public/uploads/peintures/placeholder.jpg
+
+/public/media/
 
