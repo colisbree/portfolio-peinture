@@ -1,0 +1,52 @@
+version: '3'
+services:
+    db_peinture_prod:
+        image: mysql:5
+        restart: always
+        container_name: db_peinture_prod
+        environment: 
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+            MYSQL_USER: 'root'
+        networks: 
+            - web
+
+    www_peinture_prod:
+        container_name: www_peinture_prod
+        image: alpesiserehabitat/symfonyaih:1.1
+        restart: always
+        volumes: 
+            - ./vhosts:/etc/apache2/site-enabled
+            - ../../var/www
+        environment: 
+            DATABASE_URL: mysql://root:@db_peinture_prod:3306/db_prod?serverVersion=5.7
+            COMPOSER_MEMORY_LIMIT: 1
+        labels:
+            - traefik.enable=true
+            - traefik.http.middlewares.https-redirect.redirectscheme.scheme=https
+            - traefik.http.middlewares.https-redirect.redirectscheme.permanet=true
+            - traefik.http.routers.peinture-https.rule=Host(`lastpass.com`)
+            - traefik.http.routers.peinture-https.tls=true
+            - traefik.http.routers.peinture-https.tls.certresolver=letsencrypt
+            - traefik.http.middlewares.SslHeader.headers.frameDeny=true
+            - traefik.http.middlewares.SslHeader.headers.SslRedirect=true
+            - traefik.http.middlewares.SslHeader.headers.AccessControlAllowMethods=GET,OPTION,PUT
+            - traefik.http.middlewares.SslHeader.headers.AccessControlAllowOrigin=origin-list-or-null
+            - traefik.http.middlewares.SslHeader.headers.AccessControlMAxAge=100
+            - traefik.http.middlewares.SslHeader.headers.AddVaryHeader=true
+            - traefik.http.middlewares.SslHeader.headers.BrowserXssFilter=true
+            - traefik.http.middlewares.SslHeader.headers.ContentTypeNoSniff=true
+            - traefik.http.middlewares.SslHeader.headers.ForceSTSHeader=true
+            - traefik.http.middlewares.SslHeader.headers.STSIncludeSubdomains=true
+            - traefik.http.middlewares.SslHeader.headers.STSPreload=true
+            - traefik.http.middlewares.SslHeader.headers.ContentSecurityPolicy=default-src 'self'
+            - traefik.http.middlewares.SslHeader.headers.ReferrerPolicy=same-origin
+            - traefik.http.middlewares.SslHeader.headers.FeaturePolicy="vibrate 'self'"
+            - traefik.http.middlewares.SslHeader.headers.STSSeconds=315360000
+
+        networks: 
+            - web
+
+networks: 
+    web:
+        external:
+            name: web

@@ -45,9 +45,14 @@ Php bin/phpunit --testdox
 ### Envoi des mails de contacts
 
 Les mails de prise de contact sont stockés en BDD. Pour les envoyer au peintre par mail, il faut mettre en place une tâche Cron sur :
+(remarque : Penser à corriger les lignes 42 à 45 du fichier Command/SendContactCommand.php)
 ```bash
 symfony console app:send-contact
 ```
 
-remarque : Penser à corriger les lignes 42 à 45 du fichier Command/SendContactCommand.php
+### Creation d'un nouvel utilisateur
 
+Attention : le site ne peut avoir qu'un seul utilisateur -> celui-ci à le rôle d'administrateur du site
+```bash
+symfony console app:create-user
+```
